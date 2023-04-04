@@ -1,0 +1,103 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div
+          class="card shadow-lg mb-4"
+          style="border-radius: 0.5rem; background-color: #ffffff"
+        >
+          <div class="card-body p-5">
+            <h1 class="mb-2 text-center">Bug Tracker</h1>
+            <h3 class="mb-2 text-center">Log in to your Account</h3>
+            <form
+              [formGroup]="loginForm"
+              style="
+                border-radius: 0.5rem;
+                margin-bottom: 10px;
+                background-color: #ffffff;
+              "
+            >
+              <div class="form-outline mb-4">
+                <label class="mb-1" for="Email">Email </label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      loginForm.get('username')?.invalid &&
+                      loginForm.get('username')?.touched
+                  }"
+                  class="form-control mb-1"
+                  matInput
+                  type="email"
+                  formControlName="username"
+                  placeholder="name@example.com"
+                  id="Email"
+                />
+                <mat-error
+                  *ngIf="
+                    loginForm.get('username')?.hasError('required') &&
+                    loginForm.get('username')?.touched
+                  "
+                >
+                  Email is required
+                </mat-error>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="mb-1" for="password"> Password</label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      loginForm.get('password')?.invalid &&
+                      loginForm.get('password')?.touched
+                  }"
+                  id="password"
+                  class="form-control mb-1"
+                  matInput
+                  type="password"
+                  formControlName="password"
+                  placeholder="password"
+                  (keydown.enter)="onLoginClick()"
+                />
+                <mat-error
+                  *ngIf="
+                    loginForm.get('password')?.hasError('required') &&
+                    loginForm.get('password')?.touched
+                  "
+                >
+                  Password is required
+                </mat-error>
+              </div>
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="wrongCredentials"
+              >
+                Wrong credentials! Please check your username and password.
+              </div>
+
+              <div class="mb-3 mx-auto">
+                <button
+                  type="submit"
+                  id="loginBtn"
+                  (click)="onLoginClick()"
+                  class="btn btn-primary"
+                  [disabled]="loginForm.invalid"
+                >
+                  Login
+                </button>
+              </div>
+              <mat-divider class="mb-2"></mat-divider>
+              <div class="text-center mb-4">
+                <a routerLink="/registration"
+                  >Don't have an account yet? Register</a
+                >
+              </div>
+              <div class="text-center mb-4">
+                <a routerLink="/demo">Demo</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

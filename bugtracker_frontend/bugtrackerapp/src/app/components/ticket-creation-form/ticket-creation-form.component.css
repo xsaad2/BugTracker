@@ -1,0 +1,24 @@
+.container{
+    padding: 20px;
+
+}
+.select-container{
+    width: 100%;
+    padding-right: 0;
+}
+.invalid-input {
+    border: 1px solid red;
+  }
+
+
+
+.members{
+    display: block;
+    width: 100%;
+}
+::ng-deep .mat-mdc-snack-bar-container.success-snackbar  {
+    --mat-mdc-snack-bar-button-color: #ff0000;
+    --mdc-snackbar-container-color: #10c300;
+    --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87);
+    --mdc-snackbar-supporting-text-font: 200;
+  }

@@ -1,0 +1,14 @@
+.status-bean{
+    padding: 5px;
+    margin-right: 5px;
+    height: 30px;
+    width: auto;
+    background-color: green;
+    border-radius: 15px;
+    display: flex;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+}
+.closed-ticket{
+    background-color: red;
+}

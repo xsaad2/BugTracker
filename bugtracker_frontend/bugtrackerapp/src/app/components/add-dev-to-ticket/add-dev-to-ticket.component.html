@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Developer assignement</h2>
+  <p>Choose dev or devs, which you'd like to assign to this ticket</p>
+  <form [formGroup]="devAssignForm">
+    <div class="form-group mb-3">
+      <div class="select-container mb-3">
+        <select
+          multiple
+          formControlName="member"
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <mat-spinner *ngIf="loaderService.isLoading | async"></mat-spinner>
+          <option *ngFor="let user of users" [value]="user">
+            {{ user.firstName }} {{ user.lastName }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <button
+        type="submit"
+        (click)="onSubmit($event)"
+        id="regBtn"
+        class="btn btn-primary mb-3"
+        [disabled]="!selectedDeveloper"
+      >
+        Assign
+      </button>
+    </div>
+  </form>
+</div>

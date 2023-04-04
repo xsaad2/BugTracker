@@ -1,0 +1,56 @@
+<button
+  class="mb-1"
+  mat-raised-button
+  color="primary"
+  (click)="onAddMembersToProject()"
+  data-bs-toggle="tooltip"
+  data-bs-placement="left"
+  title="click here to assign developers to this project"
+>
+  Add members
+</button>
+
+<mat-card class="card" *ngIf="project">
+  <mat-card-content class="card-content">
+    <div class="project-title">
+      <label for="project-title"><h1>Project:</h1></label>
+      <h1 class="project-title">{{ project.title }}</h1>
+    </div>
+    <div class="project-creator">
+      <label for="project-creator"><b>Created by: </b></label>
+      <p class="project-creator">
+        {{ project.projectCreator?.firstName }}
+        {{ project.projectCreator?.lastName }}
+      </p>
+    </div>
+    <div class="project-desc">
+      <label for="project-desc"><b>Description: </b></label>
+      <p class="project-desc">{{ project.description }}</p>
+    </div>
+    <label class="project-devs-label" for="project-devs"
+      ><b>Assinged developers: </b></label
+    >
+    <p
+      class="alert alert-primary"
+      role="alert"
+      *ngIf="project.members.length < 1"
+    >
+      This project does not have any team members yet!.
+    </p>
+    <div class="project-devs" *ngFor="let member of project.members">
+      <span class="devBean">
+        <div class="devNames">{{ member.firstName }} {{ member.lastName }}</div>
+
+        <span
+          (click)="removeDev(member)"
+          class="material-symbols-outlined"
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
+          title="click here to remove {{ member.firstName }} from this project"
+        >
+          person_remove
+        </span>
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>

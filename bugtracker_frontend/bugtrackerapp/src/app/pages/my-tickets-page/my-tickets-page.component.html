@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>My Tickets</h1>
+  <div class="tickets">
+    <app-my-tickets
+      class="tickets-table"
+      (ticketIdEvent)="receiveData($event)"
+    ></app-my-tickets>
+
+    <div class="chart">
+      <app-tickets-status-chart></app-tickets-status-chart>
+    </div>
+  </div>
+  <div class="no-ticket-selected" *ngIf="ticket === undefined">
+    <div class="alert alert-primary" role="alert">
+      Select a ticket from the table to see it here
+    </div>
+  </div>
+  <div class="ticket-card">
+    <app-ticket-card [ticket]="ticket"> </app-ticket-card>
+  </div>
+
+  <div class="ticket-comments">
+    <app-comments [ticket]="ticket"></app-comments>
+  </div>
+</div>

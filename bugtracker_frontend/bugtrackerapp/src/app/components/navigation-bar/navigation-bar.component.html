@@ -1,0 +1,81 @@
+<div id="navbar" class="navbar">
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <div class="icon" routerLink="mytickets">
+          <h1 class="icon-h1">
+            <b>BugTracker</b>
+            <img class="bug-icon" alt="bug icon" src="assets/bugoic.png" />
+          </h1>
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll mx-auto text-center"
+            style="--bs-scroll-height: 100px"
+          >
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarScroll"
+                routerLink="dashboard"
+                >Projects</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarScroll"
+                routerLink="mytickets"
+                >My tickets</a
+              >
+            </li>
+            <li class="nav-item" *ngIf="userIsAdmin">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarScroll"
+                routerLink="users"
+                >Admin Panel</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex align-items-center mr-3">
+            <p class="loggedas">
+              Logged in as:
+              <b>{{ currentUser?.firstName }} ({{ currentUser?.role }})</b>
+            </p>
+          </div>
+          <div class="d-flex align-items-center">
+            <button
+              type="button"
+              class="btn btn-danger mx-auto text-center"
+              (click)="logout()"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="loader">
+  <mat-progress-bar
+    *ngIf="loaderService.isLoading | async"
+    mode="query"
+  ></mat-progress-bar>
+</div>

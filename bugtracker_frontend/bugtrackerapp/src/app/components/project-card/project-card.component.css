@@ -1,0 +1,42 @@
+
+.card-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-devs{
+    margin-bottom: 0px;
+}
+.project-creator,.project-title,.project-desc{
+    margin-right: 20px;
+}
+
+
+.devBean{
+    padding: 5px;
+    margin-right: 5px;
+    height: 30px;
+    width: auto;
+    background-color: rgb(61, 103, 229);
+    border-radius: 10px;
+    display: flex;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+}
+.devNames{
+    margin: 0;
+}
+
+.devBean:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.project-devs{
+    margin-bottom: 8px;
+    display: inline-block;
+}
+.project-devs-label{
+    display: block;
+    width:100%;
+}

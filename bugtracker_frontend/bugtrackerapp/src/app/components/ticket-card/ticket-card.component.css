@@ -1,0 +1,57 @@
+.ticket-card{
+    min-height: 200px;
+    
+}
+.card-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ticket-creator,.ticket-title,.ticket-desc{
+    margin-right: 20px;
+}
+.ticket-status{
+    max-width: 200px;
+    margin-right: 20px;
+}
+.invalid-input{
+    border-color: red;
+}
+
+.ticket-devs{
+    margin-bottom: 0px;
+}
+.devBean{
+    padding: 5px;
+    margin-right: 5px;
+    height: 30px;
+    width: auto;
+    background-color: rgb(61, 103, 229);
+    border-radius: 10px;
+    display: flex;
+    color: rgb(255, 255, 255);
+}
+.devNames{
+    margin: 0;
+}
+
+
+.devBean:hover{
+    background-color: rgb(108, 142, 245);
+    cursor: pointer;
+}
+
+.ticket-devs{
+    margin-bottom: 8px;
+    display: inline-block;
+}
+.ticket-devs-label{
+    display: block;
+    width:100%;
+}
+
+.closed-ticket{
+    background-color: red;
+}
+.Open-chip-selected{
+    background-color: #008000 !important;
+}
