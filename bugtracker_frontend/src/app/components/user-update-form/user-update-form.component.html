@@ -1,0 +1,78 @@
+<div class="card-body p-5">
+  <h2 class="text-center">
+    {{ user.firstName }} {{ user.lastName }}'s Account
+  </h2>
+  <form [formGroup]="userUpdateForm">
+    <div class="form-group mb-1">
+      <label for="firstname">First Name</label>
+      <input
+        [ngClass]="{
+          'invalid-input':
+            userUpdateForm.get('firstName')?.invalid &&
+            userUpdateForm.get('firstName')?.touched
+        }"
+        id="firstname"
+        formControlName="firstName"
+        type="text"
+        class="form-control"
+      />
+      <label for="lastname">Last Name</label>
+      <input
+        [ngClass]="{
+          'invalid-input':
+            userUpdateForm.get('lastName')?.invalid &&
+            userUpdateForm.get('lastName')?.touched
+        }"
+        id="lastname"
+        formControlName="lastName"
+        type="text"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group mb-1">
+      <label for="email">Email Address</label>
+      <input
+        readonly
+        id="email"
+        formControlName="email"
+        type="email"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group mb-1">
+      <label for="role">Authority</label>
+
+      <select
+        id="role"
+        class="form-select form-control"
+        formControlName="role"
+        aria-label="Default select example"
+      >
+        <option [value]="user.role" selected>{{ user.role }}</option>
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+    </div>
+
+    <div id="regBtn" class="form-group mx-auto text-center">
+      <button
+        type="submit"
+        (click)="onSave()"
+        class="btn btn-primary mb-3"
+        [disabled]="userUpdateForm.invalid"
+        style="width: 100px"
+      >
+        Save
+      </button>
+      <button
+        type="submit"
+        (click)="onDiscard()"
+        class="btn btn-danger mb-3"
+        [disabled]="userUpdateForm.invalid"
+        style="width: 100px"
+      >
+        Discard
+      </button>
+    </div>
+  </form>
+</div>

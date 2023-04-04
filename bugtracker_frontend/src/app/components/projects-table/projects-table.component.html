@@ -1,0 +1,70 @@
+<div class="container">
+  <h1>Projects</h1>
+  <button
+    class="mb-1"
+    mat-raised-button
+    color="primary"
+    (click)="onNewProjectClick()"
+  >
+    New project
+  </button>
+  <table
+    mat-table
+    [dataSource]="datasource"
+    class="table table-striped table-bordered table-hover table-sm"
+  >
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let project" (click)="OnCodeClick(project.id)">
+        <u>{{ project.id }}</u>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let project">
+        {{ project.title }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="creator">
+      <th mat-header-cell *matHeaderCellDef>Project creator</th>
+      <td mat-cell *matCellDef="let project">
+        {{
+          project.projectCreator?.firstName +
+            " " +
+            project.projectCreator?.lastName
+        }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Teamsize">
+      <th mat-header-cell *matHeaderCellDef>Team Size</th>
+      <td mat-cell *matCellDef="let project">
+        {{ project.members.length }} members
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="nbroftickets">
+      <th mat-header-cell *matHeaderCellDef>Number of tickets</th>
+      <td mat-cell *matCellDef="let project">
+        {{ project.tickets.length }} tickets
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <div
+    class="alert alert-primary"
+    role="alert"
+    *ngIf="!datasource?.data || datasource?.data.length === 0"
+  >
+    You do not have any projects yet!
+  </div>
+  <mat-paginator
+    class="paginator"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [pageSize]="8"
+  >
+  </mat-paginator>
+</div>

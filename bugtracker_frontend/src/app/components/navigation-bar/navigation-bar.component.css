@@ -1,0 +1,43 @@
+.navbar{
+    position: fixed;
+    background-color: rgb(89, 173, 228);
+    margin-top: 0;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+    
+}
+
+.bug-icon{
+    max-width: 50px;
+    margin: 0;
+}
+.icon-h1{
+    margin:0;
+    font-family: cursive;
+}
+.spacer{
+    width: 80%;
+}
+.nav-item:hover{
+    background-color: rgb(126, 182, 219);
+    border-radius: 5px;
+    box-shadow: 100px;
+}
+.nav-link{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+.loader{
+    z-index: 9999;
+    width: 100%;
+    background-color: rgb(255, 0, 0);
+    
+}
+
+.loggedas{
+    font-size: small;
+    font-family: cursive;
+    margin-right: 10px;
+    padding-top: 10px;
+}

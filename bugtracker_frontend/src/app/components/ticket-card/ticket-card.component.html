@@ -1,0 +1,74 @@
+<button
+  (click)="onAddMembersClick()"
+  class="mb-2"
+  mat-raised-button
+  color="primary"
+  data-bs-toggle="tooltip"
+  data-bs-placement="left"
+  title="click here to assign developers to this project"
+  *ngIf="ticket"
+>
+  Assign devs
+</button>
+<mat-card class="ticket-card" *ngIf="ticket">
+  <mat-card-content class="card-content">
+    <div class="ticket-title">
+      <label for="ticket-title"><b>Ticket: </b></label>
+      <h1 class="ticket-title">{{ ticket.title }}</h1>
+    </div>
+
+    <div class="ticket-creator">
+      <label for="ticket-creator"><b>Created by: </b></label>
+      <p class="ticket-creator">
+        {{ ticket.ticketCreator.firstName }}
+        {{ ticket.ticketCreator.lastName }}
+      </p>
+    </div>
+    <div class="ticket-status">
+      <label for="ticket-status"><b>Status: </b></label>
+      <mat-chip-listbox aria-label="Fish selection">
+        <mat-chip-option
+          [ngClass]="{
+            'Open-chip-selected': ticket.status === 'OPEN'
+          }"
+          id="open-status-chip"
+          [selected]="ticket.status === 'OPEN'"
+          (click)="updateStatus('OPEN')"
+          >OPEN</mat-chip-option
+        >
+        <mat-chip-option
+          color="warn"
+          [selected]="ticket.status === 'CLOSED'"
+          (click)="updateStatus('CLOSED')"
+          >CLOSED</mat-chip-option
+        >
+      </mat-chip-listbox>
+    </div>
+    <div class="ticket-desc">
+      <label for="ticket-desc"><b>Description: </b></label>
+      <p class="ticket-desc">{{ ticket.description }}</p>
+    </div>
+
+    <label class="ticket-devs-label" for="ticket-devs"
+      ><b>Assinged developers: </b></label
+    >
+    <p *ngIf="ticket.assignees.length < 1">
+      This ticket does Not have any assigned developers yet.
+    </p>
+    <div class="ticket-devs" *ngFor="let member of ticket.assignees">
+      <span class="devBean">
+        <div class="devNames">{{ member.firstName }} {{ member.lastName }}</div>
+
+        <span
+          (click)="onRemoveDev(member)"
+          class="material-symbols-outlined"
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
+          title="click here to remove {{ member.firstName }} from this ticket"
+        >
+          person_remove
+        </span>
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>

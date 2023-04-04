@@ -1,0 +1,158 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div
+          class="card shadow-lg mb-4"
+          style="border-radius: 0.5rem; background-color: #ffffff"
+        >
+          <div class="card-body p-5">
+            <h2 class="text-center">Create An account</h2>
+            <form [formGroup]="registrationForm">
+              <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      registrationForm.get('firstName')?.invalid &&
+                      registrationForm.get('firstName')?.touched
+                  }"
+                  id="firstname"
+                  formControlName="firstName"
+                  type="text"
+                  class="form-control"
+                />
+                <mat-error
+                  *ngIf="
+                    registrationForm.get('firstName')?.hasError('required') &&
+                    registrationForm.get('firstName')?.touched
+                  "
+                >
+                  Please enter your first name
+                </mat-error>
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      registrationForm.get('lastName')?.invalid &&
+                      registrationForm.get('lastName')?.touched
+                  }"
+                  id="lastname"
+                  formControlName="lastName"
+                  type="text"
+                  class="form-control"
+                />
+                <mat-error
+                  *ngIf="
+                    registrationForm.get('lastName')?.hasError('required') &&
+                    registrationForm.get('lastName')?.touched
+                  "
+                >
+                  Please enter your last name
+                </mat-error>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      registrationForm.get('email')?.invalid &&
+                      registrationForm.get('email')?.touched
+                  }"
+                  id="email"
+                  formControlName="email"
+                  type="email"
+                  class="form-control"
+                />
+                <mat-error
+                  *ngIf="
+                    registrationForm.get('email')?.hasError('required') &&
+                    registrationForm.get('email')?.touched
+                  "
+                >
+                  Please enter your E-mail
+                </mat-error>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      registrationForm.get('password')?.invalid &&
+                      registrationForm.get('password')?.touched
+                  }"
+                  id="password"
+                  formControlName="password"
+                  type="password"
+                  class="form-control"
+                />
+                <mat-error
+                  *ngIf="
+                    registrationForm.get('password')?.hasError('required') &&
+                    registrationForm.get('password')?.touched
+                  "
+                >
+                  You must choose a password
+                </mat-error>
+              </div>
+              <div class="form-group">
+                <label for="rep-password">Repeat password</label>
+                <input
+                  [ngClass]="{
+                    'invalid-input':
+                      registrationForm.get('repeatPassword')?.invalid
+                  }"
+                  id="rep-password"
+                  formControlName="repeatPassword"
+                  type="password"
+                  class="form-control"
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    registrationForm.get('repeatPassword')?.hasError('required')
+                  "
+                >
+                  Please repeat your password
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    registrationForm
+                      .get('repeatPassword')
+                      ?.hasError('mismatchedPasswords') &&
+                    registrationForm.get('repeatPassword')?.valueChanges
+                  "
+                >
+                  Passwords do not match
+                </mat-error>
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  (click)="onRegister()"
+                  id="regBtn"
+                  class="btn btn-primary mb-3"
+                  [disabled]="registrationForm.invalid"
+                >
+                  Register
+                </button>
+              </div>
+              <div class="text-center mb-4">
+                <a routerLink="/login">Back to login</a>
+              </div>
+            </form>
+
+            <div *ngIf="emailExists" class="alert alert-danger" role="alert">
+              Email is already linked to an existing account!
+            </div>
+            <div *ngIf="regFailed" class="alert alert-danger" role="alert">
+              Registration failed, please try again later.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<button
+  id="new-ticket-btn"
+  class="mb-1"
+  mat-raised-button
+  color="primary"
+  (click)="onNewTicketClick()"
+>
+  New Ticket
+</button>
+<table
+  id="table"
+  mat-table
+  [dataSource]="datasource"
+  class="table table-striped table-bordered table-hover"
+>
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let ticket" (click)="OnTicketClick(ticket.id)">
+      <u>{{ ticket.id }}</u>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="CreationDate">
+    <th mat-header-cell *matHeaderCellDef>Creation date</th>
+    <td mat-cell *matCellDef="let ticket">
+      {{ ticket.addedOn.toLocaleString() }}
+    </td>
+  </ng-container>
+
+  <!-- title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let ticket">
+      {{ ticket.title }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let ticket">
+      {{ ticket.description }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="creator">
+    <th mat-header-cell *matHeaderCellDef>Ticket creator</th>
+    <td mat-cell *matCellDef="let ticket">
+      {{
+        ticket.ticketCreator?.firstName + " " + ticket.ticketCreator?.lastName
+      }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let ticket">
+      <span
+        class="status-bean"
+        [ngClass]="{
+          'closed-ticket': ticket.status == 'CLOSED'
+        }"
+      >
+        <p class="ticket-status">{{ ticket.status }}</p>
+      </span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<div
+  class="alert alert-primary"
+  role="alert"
+  *ngIf="datasource?.data.length === 0"
+>
+  This Project has No Tickets Yet!
+</div>
+
+<mat-paginator class="paginator" [pageSizeOptions]="[5, 10]" [pageSize]="5">
+</mat-paginator>

@@ -1,0 +1,53 @@
+<div class="container" *ngIf="ticket">
+  <h1 class="header">Comments</h1>
+  <div class="comment-input">
+    <form [formGroup]="commentForm">
+      <div class="form-outline mb-4">
+        <textarea
+          id="comment-textarea"
+          (keydown.enter)="onAddComment()"
+          [ngClass]="{
+            'invalid-input':
+              commentForm.get('content')?.invalid &&
+              commentForm.get('content')?.touched
+          }"
+          class="form-control mb-1"
+          matInput
+          type="text"
+          formControlName="content"
+          placeholder="Comment..."
+        ></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="comment-container">
+    <div
+      class="alert alert-info"
+      role="alert"
+      *ngIf="ticket.ticketComments.length === 0"
+    >
+      This Ticket does not have any comments yet!
+    </div>
+    <div class="comment" *ngFor="let comment of ticket.ticketComments">
+      <div class="comment-header">
+        <span class="comment-author">
+          <b
+            >{{ comment.commentator.firstName }}
+            {{ comment.commentator.lastName }}</b
+          ></span
+        >
+      </div>
+
+      <div class="comment-content">
+        <div class="content">{{ comment.content }}</div>
+        <div class="delete-Btn">
+          <mat-icon (click)="deleteComment(comment.id)"
+            >delete_forever</mat-icon
+          >
+        </div>
+      </div>
+
+      <span class="comment-date">{{ comment.creationDate | timeAgo }}</span>
+    </div>
+  </div>
+</div>

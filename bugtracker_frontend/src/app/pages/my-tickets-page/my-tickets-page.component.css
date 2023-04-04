@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.tickets{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.ticket-details{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ticket-card{
+    flex: 1;
+    min-width: 350px;
+}
+.ticket-comments{
+    flex: 2;
+    margin-top: 8px;
+    min-width: 350px;
+}
+.tickets-table{
+    flex: 2;
+}
+.chart{
+    max-height: 400px;
+    display: flex;
+    flex: 1;
+    background-color: aliceblue;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+}

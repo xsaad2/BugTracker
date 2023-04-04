@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="project-card">
+    <app-project-card [project]="project"></app-project-card>
+  </div>
+
+  <div class="tickets-table">
+    <app-tickets-table
+      [project]="project"
+      (ticketIdEvent)="receiveData($event)"
+    ></app-tickets-table>
+  </div>
+
+  <div class="ticket-card">
+    <h1>Ticket:</h1>
+    <app-ticket-card [ticket]="ticket"> </app-ticket-card>
+  </div>
+  <div class="ticket-comments">
+    <app-comments [ticket]="ticket"></app-comments>
+  </div>
+  <div class="no-ticket-selected" *ngIf="ticket === undefined">
+    <div class="alert alert-primary" role="alert">
+      Select a ticket from the table to see it here
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+
+.profiles-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; 
+  }
+  
+  .admin, .user {
+    margin: 0 10px; 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+.admin:hover,.user:hover{
+    background-color: aliceblue;
+}
+img {
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+  }
